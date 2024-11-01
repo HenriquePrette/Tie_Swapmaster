@@ -1,0 +1,63 @@
+header {
+    background-color: #00ffc8; /* Cor verde */
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: space-between; /* Logo à esquerda e nav à direita */
+}
+
+.logo {
+    max-width: 50px;
+    animation: pulseLogo 3s infinite;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@keyframes pulseLogo {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+    margin-right: 0%;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #fff; /* Texto branco */
+    background-color: #000; /* Fundo preto */
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+}
+
+.menu li a:hover {
+    background-color: #fff; /* Fundo branco no hover */
+    color: #000; /* Texto preto no hover */
+    transform: scale(1.1);
+}
+
+h1{
+    text-align: center;
+}

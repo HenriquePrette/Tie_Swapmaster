@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar/Registro</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="images/background.jpg" type="image/icon type">
+    <style>
+        /* Animação de autoescrita */
+        .auto-type {
+            font-size: 300px;
+            font-weight: bold;
+            color: rgb(0, 255, 234);
+            border-right: 3px solid rgb(0, 255, 242);
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 1s steps(40) 1s forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 300px; } /* Ajuste conforme necessário */
+        }
+
+        @keyframes blink {
+            from, to { border-color: rgb(0, 217, 255); }
+            50% { border-color: rgb(0, 217, 255); }
+        }
+
+        /* Estilo do modal de "Esqueceu a Senha" */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 9999; /* Aumentar o z-index para estar à frente de outros elementos */
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 400px; 
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content h3 {
+            color: rgb(0, 217, 255);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content input[type="email"],
+        .modal-content input[type="submit"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid rgb(0, 217, 255);
+            font-size: 16px;
+        }
+
+        .modal-content input[type="submit"] {
+            background-color: rgb(0, 217, 255);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .modal-content input[type="submit"]:hover {
+            background-color: rgb(0, 180, 220);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Garantir que o formulário de login/cadastro tenha z-index menor */
+        .formbx {
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Estilo de sucesso ao criar conta */
+        #signupSuccess {
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Design animado para o botão de login */
+     #signupSuccess .signinbtn {
+    background: linear-gradient(90deg, rgb(244, 90, 7) 0%, rgb(0, 0, 0) 100%);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(0, 217, 255, 0.5);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#signupSuccess .signinbtn:hover {
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(244, 90, 7) 100%);
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loginbg">
+            <div class="box signin">
+                <h2>Já possui uma conta?</h2>
+                <button class="signinbtn">Entrar</button>
+            </div>
+            <div class="box signup">
+                <h2>Não possui uma conta?</h2>
+                <button class="signupbtn">Criar Conta</button>
+            </div>
+        </div>
+        <div class="formbx">
+            <div class="form signinform">
+                <form action="nhene.html" method="post">
+                    <h2 class="auto-type">GRUPO TIE</h2>
+                    <h3>Entrar</h3>
+                    <input type="text" placeholder="Usuário" required>
+                    <input type="password" placeholder="Senha" required>
+                    <input type="submit" value="Login">
+                    <a href="#" class="forgot" id="forgotPassword">Esqueceu a senha</a>
+                    <a href="nhene.html" class="forgot">Voltar</a>
+                </form>
+            </div>
+            <div class="form signupform">
+                <form id="signupForm">
+                    <h3>Conecte-se</h3>
+                    <input type="text" id="name" placeholder="Informe seu nome" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="date" id="birthday" placeholder="Data de aniversário" required>
+                    <input type="password" id="password" placeholder="Senha" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirme a senha" required>
+                    <input type="submit" value="Cadastrar">
+                </form>
+                <div id="signupSuccess" style="display:none;">
+                    <h3>Conta criada com sucesso!</h3>
+                    <button class="signinbtn">Clique aqui para fazer login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Esqueceu a Senha -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img src="images/hs.jpg" alt="Esqueceu a Senha">
+            <h3>Esqueceu a Senha</h3>
+            <form id="forgotPasswordForm">
+                <input type="email" placeholder="Digite seu email" required>
+                <input type="submit" value="Enviar">
+            </form>
+            <div id="emailSentMessage" style="display:none;">
+                <h3>Instruções enviadas para o email</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const signinbtn = document.querySelector('.signinbtn');
+        const signupbtn = document.querySelector('.signupbtn');
+        const formbx = document.querySelector('.formbx');
+        const body = document.querySelector('body');
+        const signupForm = document.getElementById('signupForm');
+        const signupSuccess = document.getElementById('signupSuccess');
+        const forgotPasswordLink = document.getElementById('forgotPassword');
+        const forgotPasswordModal = document.getElementById('forgotPasswordModal');
+        const closeModal = document.querySelector('.close');
+        const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+        const emailSentMessage = document.getElementById('emailSentMessage');
+
+        signupbtn.onclick = function(){
+            formbx.classList.add('active');
+            body.classList.add('active');
+        }
+
+        signinbtn.onclick = function(){
+            formbx.classList.remove('active');
+            body.classList.remove('active');
+        }
+
+        // Adicionando o comportamento de sucesso ao formulário de criação de conta
+        signupForm.onsubmit = function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            signupForm.reset(); // Limpa todos os campos do formulário
+            signupForm.style.display = "none"; // Esconde o formulário de cadastro
+            signupSuccess.style.display = "block"; // Mostra a mensagem de sucesso
+        }
+
+        // Redireciona para a tela de login ao clicar no botão após criar a conta
+        signupSuccess.querySelector('.signinbtn').onclick = function(){
+            formbx.classList.remove('active');
+            body.classList.remove('active');
+            signupSuccess.style.display = "none"; // Esconde a mensagem de sucesso
+            signupForm.style.display = "block"; // Mostra o formulário de login novamente
+        }
+
+        // Abrir o modal de "Esqueceu a Senha"
+        forgotPasswordLink.onclick = function(event) {
+            event.preventDefault();
+            forgotPasswordModal.style.display = "block";
+        }
+
+        // Fechar o modal ao clicar no X
+        closeModal.onclick = function() {
+            forgotPasswordModal.style.display = "none";
+        }
+
+        // Fechar o modal ao clicar fora dele
+        window.onclick = function(event) {
+            if (event.target == forgotPasswordModal) {
+                forgotPasswordModal.style.display = "none";
+            }
+        }
+
+        // Simular envio de email ao enviar o formulário de "Esqueceu a Senha"
+        forgotPasswordForm.onsubmit = function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            forgotPasswordForm.style.display = "none"; // Esconde o formulário
+            emailSentMessage.style.display = "block"; // Mostra a mensagem de sucesso
+        }
+    </script>
+</body>
+</html>

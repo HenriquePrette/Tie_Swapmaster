@@ -1,0 +1,175 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: aqua;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background-color: rgb(244, 90, 7); /* Cor verde */
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: space-between; /* Logo à esquerda e nav à direita */
+}
+
+.logo {
+    max-width: 50px;
+    animation: pulseLogo 3s infinite;
+    object-fit: cover;
+}
+
+@keyframes pulseLogo {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    gap: 30px;
+    margin-right: 0%;
+    
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #fff; /* Texto branco */
+    background-color: #000; /* Fundo preto */
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+}
+
+.menu li a:hover {
+    background-color: rgb(255, 247, 0); /* Fundo branco no hover */
+    color: #000; /* Texto preto no hover */
+    transform: scale(1.1);
+}
+
+/* Status */
+.status {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Catálogo de Serviços */
+.catalogo-servicos {
+    padding: 20px;
+    flex-grow: 1; /* Para preencher o espaço restante */
+    text-align: center;
+}
+
+.catalogo-servicos h2 {
+    margin-bottom: 20px;
+    color: #000000; /* Verde */
+    animation: blinkText 1.5s infinite;
+}
+
+@keyframes blinkText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
+    gap: 20px;
+    justify-content: center; /* Centraliza o catálogo */
+    align-items: stretch; /* Para preencher o espaço vertical */
+}
+
+.servico-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Para garantir que todos os itens fiquem alinhados */
+    background-color: #000; /* Fundo preto */
+    color: #fff; /* Texto branco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+
+.servico-item:hover {
+    background-color: white; /* Cor de fundo ao passar o mouse */
+    color: rgb(244, 90, 7); /* Texto verde */
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.servico-item img {
+    width: 100%; /* Ajusta a largura da imagem para 100% da caixa */
+    height: 200px; /* Altura ajustada para preencher mais espaço verticalmente */
+    object-fit: cover; /* Mantém a proporção da imagem e corta partes extras */
+    border-radius: 10px; /* Arredonda as bordas das imagens */
+    margin-bottom: 15px; /* Espaçamento abaixo da imagem */
+}
+
+.botao-detalhes {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: rgb(244, 90, 7); /* Verde */
+    border: 2px solid rgb(244, 90, 7); /* Borda verde */
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    align-self: center;
+}
+
+.botao-detalhes:hover {
+    background-color: rgb(255, 255, 255); /* Verde */
+    color: rgb(244, 90, 7); /* Texto preto */
+}
+
+.valor-exp {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: #000000;
+    color: rgb(244, 90, 7);
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Para empurrar o footer para baixo */
+}
+
+botao{
+    display: inline-block;
+    background-color: #000;
+}
